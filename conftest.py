@@ -1,12 +1,10 @@
 import pytest
 from methods.register_methods import UserRegisterMethods
 from selenium import webdriver  
-
+from methods.order_methods import OrderMethods
 
 from helper import *
 
-# pytest --browser-chrome
-# pytest --browser-firefox
 
 class WebDriverFactory:
     @staticmethod
@@ -38,16 +36,27 @@ def driver(request):
 
 @pytest.fixture
 def user_payload():
-    # Используем твой метод для генерации словаря
+    
     return UserRegisterMethods.gen_data(generate_registration_data)
 
 @pytest.fixture
 def create_and_delete_user(user_payload):
     
     response = UserRegisterMethods.create_user(user_payload)
-    assert response.status_code == 200, f"Ошибка регистрации: {response.text}"
+    assert response.status_code == 200
     
     token = response.json().get("accessToken")
 
     yield user_payload
+
     UserRegisterMethods.delete_user(token)
+
+@pytest.fixture
+def order_payload():
+  
+    response = OrderMethods.get_ingredients_list()
+
+    ids = OrderMethods.get_only_ingredients_ids(response)
+    payload = {"ingredients": [ids[0], ids[1]]}
+    
+    return payload

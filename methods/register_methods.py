@@ -44,3 +44,9 @@ class UserRegisterMethods:
             "email": DataTestloginUser.email,
             "password": DataTestloginUser.password
         }
+    
+    @staticmethod
+    @allure.step("Сохранить токен")
+    def save_token(login_response):
+        return login_response.json().get("accessToken")
+         

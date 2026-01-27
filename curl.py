@@ -9,3 +9,5 @@ class Url:
     LOGIN_PAGE = f"{BASE_URL}/api/auth/login"
 
     ORDERS = f"{BASE_URL}/api/orders"
+    
+    INGREDIENTS = f"{BASE_URL}/api/ingredients"
