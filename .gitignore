@@ -6,6 +6,7 @@ env/
 
 # Python кэш и временные файлы
 __pycache__/
+*.pyc
 *.py[cod]
 *$py.class
 .pytest_cache/
@@ -13,7 +14,6 @@ __pycache__/
 
 # Отчеты Allure (результаты запусков)
 allure-results/
-allure-report/
 
 # Логи и системные файлы
 *.log
