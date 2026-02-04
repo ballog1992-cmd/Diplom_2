@@ -63,12 +63,14 @@ class TestOrderUser:
         assert response.json().get("success") is True 
 
     @allure.title("Создание заказа без авторизации")
+    @allure.description("Система позволяет создать заказ неавторизированным пользователям")
+    @pytest.mark.xfail(reason="Код 200 Ok при создании заказа неавторизированным пользователем в место 401 UNAUTHORIZED")
     def test_create_order_not_authorized_success(self, order_payload):
        
         response = OrderMethods.create_order(order_payload)
 
-        assert response.status_code == DataCode.OK
-        assert response.json().get("success") is True   
+        assert response.status_code == DataCode.UNAUTHORIZED
+        assert response.json().get("success") is False   
 
 
     @allure.title("Ошибка: создание заказа без ингредиентов")

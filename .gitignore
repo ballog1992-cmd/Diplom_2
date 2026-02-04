@@ -14,6 +14,7 @@ __pycache__/
 
 # Отчеты Allure (результаты запусков)
 allure-results/
+allure_results/
 
 # Логи и системные файлы
 *.log
