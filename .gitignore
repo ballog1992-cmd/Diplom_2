@@ -1,0 +1,29 @@
+# Виртуальное окружение
+.venv/
+venv/
+ENV/
+env/
+
+# Python кэш и временные файлы
+__pycache__/
+*.pyc
+*.py[cod]
+*$py.class
+.pytest_cache/
+.python-version
+
+# Отчеты Allure (результаты запусков)
+allure-results/
+allure_results/
+
+# Логи и системные файлы
+*.log
+.DS_Store
+Thumbs.db
+
+# Конфиденциальные данные (если появятся файлы .env)
+.env
+
+# Папки сред разработки
+.vscode/
+.idea/
